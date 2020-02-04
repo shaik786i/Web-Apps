@@ -1,0 +1,14 @@
+<mat-card [ngClass]="{'apply-color': !isNotesPresent}">
+    <div class="cursor-pointer">
+        <span *ngIf="notes ; else AddNew">
+            {{notes}}
+        </span>
+        <ng-template #AddNew>Add New Notes</ng-template>
+    </div>
+</mat-card>
+<div *ngFor="let notes of listOfNotes | filter:searchText; let i = index">
+    <mat-card [ngClass]="{'selected': isActiveItem(notes)}" class="h-20p cursor-pointer" (click)="openNotes(i)">
+        <div class="notes-title" [innerHTML]="notes.notes | highlight: searchText">{{notes.notes}}</div>
+        <div class="notes-title fontsize10 date">{{notes.date | date:'medium'}}</div>
+    </mat-card>
+</div>

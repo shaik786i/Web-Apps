@@ -1,0 +1,74 @@
+<mat-sidenav-container class="container" (window:resize)="onResize($event)">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+        <app-notes-list [notes]="notes" [searchText]="key"></app-notes-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="container" [ngStyle]="{'background-color': getcolor()}">
+        <mat-toolbar class="tool-bar toolbar-content">
+            <mat-toolbar-row>
+                <div class="mobile-view">
+                    <span class="pr-50 ">
+                        <mat-checkbox [(ngModel)]="opened">open/close side bar</mat-checkbox>
+                    </span>
+                
+                    <mat-form-field *ngIf="showOptionsInColumns">
+                            <input class="search-input" placeholder="search here" matInput [(ngModel)]="key" (keyup)="search(key)">
+                        </mat-form-field>
+                </div>
+
+                <div *ngIf="showOptionsInColumns; else inRow">
+                    <div>                    
+                        <button mat-button [matMenuTriggerFor]="menu">Options</button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item>
+                                <span (click)="deleteNotes(notes)" class="pr-50">
+                                    <mat-icon>delete_sweep</mat-icon>Delete
+                                </span>
+                            </button>
+                            <button mat-menu-item>
+                                <span (click)="save()" class="pr-50">
+                                    <mat-icon>save</mat-icon>Save
+                                </span>
+                            </button>
+                        </mat-menu>
+                    </div>
+                
+                </div>
+                <ng-template #inRow>
+                    <span  (click)="deleteNotes(notes)" class="pr-50 cursor-pointer">
+                        <mat-icon>delete_sweep</mat-icon>
+                    </span>
+                    <span (click)="save()" class="pr-50 cursor-pointer">
+                        <mat-icon>save</mat-icon>
+                    </span>
+                    <mat-form-field>
+                        <input class="search-input" placeholder="search here" matInput [(ngModel)]="key" (keyup)="search(key)">
+                    </mat-form-field>
+                </ng-template>
+
+            </mat-toolbar-row>
+
+
+        </mat-toolbar>
+        <hr>
+        <div class="align-center">
+                <mat-form-field>
+                        <mat-label>Choose Color to Fill Background</mat-label>
+                        <mat-select [(value)]="Selectedcolor">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let color of colors"  [value]="color">{{color}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+        </div>
+                <div class="align-center">{{currentDate | date:'medium'}}</div>
+                <div class="content" >
+                    <mat-form-field id="content" class="w-100">
+                        <textarea [(ngModel)]="notes" (focus)="getStatus()" #name id="content" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="3" cdkAutosizeMaxRows="50" cdkAutosizeMaxCols="100" placeholder="Enter your text here" ></textarea>
+                    </mat-form-field>
+                </div>
+
+        
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

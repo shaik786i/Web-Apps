@@ -1,0 +1,21 @@
+.w-100{
+    width: 100%;
+}
+
+.h-20p{
+    height: 20px;
+}
+.fontsize10{
+    font-size: 10px
+}
+.pr-50{
+    padding-right: 50px;
+}
+.toolbar-content{
+    font-weight: 400;
+    font-size: 14px;
+    font-style: oblique;
+}
+.cursor-pointer{
+    cursor: pointer;
+}

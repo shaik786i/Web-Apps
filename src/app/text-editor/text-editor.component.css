@@ -1,0 +1,44 @@
+.container{
+    height: 100vh;
+    overflow: hidden;
+    padding: 5px;
+  }
+textarea{
+    resize: none !important;
+    max-height: 80vh !important;
+    overflow: scroll;
+}
+.tool-bar{
+    background-color: transparent;
+    height: 10%;
+}
+::ng-deep.mat-form-field-underline {
+    display: none;
+    height: 0px !important;
+}
+::ng-deep.mat-form-field-ripple{
+    display: none;
+    height: 0px;
+}
+mat-sidenav{
+    
+    width: 20%;
+}
+::ng-deep.mat-drawer-inner-container{
+    overflow: hidden !important;
+}
+.align-center{
+    display: flex;
+    justify-content: center;
+}
+.search-input{
+    border: 0.5px solid black;
+    border-radius: 10px;
+    background-color: white
+}
+
+.mobile-view{
+    display: flex;
+    flex-direction: column;
+    width: 155px;
+}

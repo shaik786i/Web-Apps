@@ -1,0 +1,9 @@
+.selected{
+    background-color: orange;
+}
+.notes-title{
+    width: max-content;
+}
+.apply-color{
+    background-color: coral;
+}
